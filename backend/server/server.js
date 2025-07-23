@@ -15,9 +15,9 @@ connectDB().catch(err => {
 
 const app = express();
 
-// CORS configuration
+// ✅ Fixed: CORS configuration for production
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: process.env.FRONTEND_URL,  // ✅ Uses env variable!
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Accept', 'Authorization']
@@ -33,8 +33,6 @@ app.get('/', (req, res) => res.send('API Running'));
 app.use('/api/auth', authRoutes);
 app.use('/api/orders', orderRoutes);
 
-
-
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
@@ -43,8 +41,8 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}`);
-  console.log('CORS enabled for http://localhost:3000');
+  console.log(✅ Server started on port ${PORT});
+  console.log(✅ CORS enabled for ${process.env.FRONTEND_URL});
 });
 
 console.log('Server is running!');
