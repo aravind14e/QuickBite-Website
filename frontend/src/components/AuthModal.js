@@ -7,6 +7,9 @@ export default function AuthModal({ open, onClose, onSignup, onLogin }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  // ✅ Your Render backend URL — REPLACE with your actual one!
+  const BACKEND_URL = 'https://quickbite-website0.onrender.com';
+
   if (!open) return null;
 
   const handleChange = e => {
@@ -20,12 +23,13 @@ export default function AuthModal({ open, onClose, onSignup, onLogin }) {
     setError('');
     
     try {
-      const res = await fetch('http://localhost:5002/api/auth/signup', {
+      const res = await fetch(${BACKEND_URL}/api/auth/signup, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
+        credentials: 'include', // ✅ Important if using cookies!
         body: JSON.stringify(form)
       });
       
@@ -33,12 +37,13 @@ export default function AuthModal({ open, onClose, onSignup, onLogin }) {
       
       if (res.ok) {
         // After successful signup, automatically log in
-        const loginRes = await fetch('http://localhost:5002/api/auth/login', {
+        const loginRes = await fetch(${BACKEND_URL}/api/auth/login, {
           method: 'POST',
           headers: { 
             'Content-Type': 'application/json',
             'Accept': 'application/json'
           },
+          credentials: 'include', // ✅ Important!
           body: JSON.stringify(form)
         });
         
@@ -68,12 +73,13 @@ export default function AuthModal({ open, onClose, onSignup, onLogin }) {
     setError('');
     
     try {
-      const res = await fetch('http://localhost:5002/api/auth/login', {
+      const res = await fetch(${BACKEND_URL}/api/auth/login, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
+        credentials: 'include', // ✅ Important!
         body: JSON.stringify(form)
       });
       
