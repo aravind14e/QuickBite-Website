@@ -4,7 +4,7 @@ QuickBite is a cutting-edge, fully responsive food delivery web application buil
 
 ## 🌟 Live Demo
 
-[View Live Demo](https://your-demo-link.com) | [API Documentation](https://your-api-docs.com)
+[View Live Demo](https://quick-bite-website-7fpl7yczw.vercel.app/) 
 
 ## 🚀 Key Highlights
 
