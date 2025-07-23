@@ -1,0 +1,113 @@
+.app-details {
+  margin: 3rem 2rem;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  text-align: center;
+}
+
+.app-details h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.app-details p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.app-badges {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.app-badge {
+  display: inline-block;
+}
+
+.app-badge img {
+  height: 60px;
+  transition: transform 0.2s ease;
+}
+
+.app-badge img:hover {
+  transform: scale(1.05);
+}
+
+.app-preview {
+  margin-top: 2rem;
+  border-radius: 12px;
+  max-width: 300px;
+  width: 100%;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .app-details {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+  }
+
+  .app-details h2 {
+    font-size: 1.6rem;
+  }
+
+  .app-details p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .app-badges {
+    gap: 1.5rem;
+  }
+
+  .app-badge img {
+    height: 50px;
+  }
+
+  .app-preview {
+    max-width: 250px;
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-details {
+    margin: 1.5rem 0.5rem;
+    padding: 1.2rem;
+    border-radius: 14px;
+  }
+
+  .app-details h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .app-details p {
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.4;
+  }
+
+  .app-badges {
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .app-badge img {
+    height: 45px;
+  }
+
+  .app-preview {
+    max-width: 200px;
+    margin-top: 1.2rem;
+  }
+}
