@@ -7,21 +7,21 @@ export default function AuthModal({ open, onClose, onSignup, onLogin }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  // ✅ Your Render backend URL — REPLACE with your actual one!
+  
   const BACKEND_URL = 'https://quickbite-website0.onrender.com';
 
   if (!open) return null;
 
   const handleChange = e => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    setError(''); // Clear error when user types
+    setError('');
   };
 
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError('');
-    
+
     try {
       const res = await fetch(${BACKEND_URL}/api/auth/signup, {
         method: 'POST',
@@ -29,26 +29,25 @@ export default function AuthModal({ open, onClose, onSignup, onLogin }) {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        credentials: 'include', // ✅ Important if using cookies!
+        credentials: 'include',
         body: JSON.stringify(form)
       });
-      
+
       const data = await res.json();
-      
+
       if (res.ok) {
-        // After successful signup, automatically log in
         const loginRes = await fetch(${BACKEND_URL}/api/auth/login, {
           method: 'POST',
           headers: { 
             'Content-Type': 'application/json',
             'Accept': 'application/json'
           },
-          credentials: 'include', // ✅ Important!
+          credentials: 'include',
           body: JSON.stringify(form)
         });
-        
+
         const loginData = await loginRes.json();
-        
+
         if (loginRes.ok) {
           localStorage.setItem('token', loginData.token);
           onSignup && onSignup(loginData.user);
@@ -71,7 +70,7 @@ export default function AuthModal({ open, onClose, onSignup, onLogin }) {
     e.preventDefault();
     setLoading(true);
     setError('');
-    
+
     try {
       const res = await fetch(${BACKEND_URL}/api/auth/login, {
         method: 'POST',
@@ -79,12 +78,12 @@ export default function AuthModal({ open, onClose, onSignup, onLogin }) {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        credentials: 'include', // ✅ Important!
+        credentials: 'include',
         body: JSON.stringify(form)
       });
-      
+
       const data = await res.json();
-      
+
       if (res.ok) {
         localStorage.setItem('token', data.token);
         onLogin && onLogin(data.user);
@@ -105,9 +104,9 @@ export default function AuthModal({ open, onClose, onSignup, onLogin }) {
       <div className="modal-content">
         <button className="modal-close" onClick={onClose}>&times;</button>
         <h2>{isSignIn ? 'Login' : 'Sign Up'}</h2>
-        
+
         {error && <div className="error-message">{error}</div>}
-        
+
         <form onSubmit={isSignIn ? handleLoginSubmit : handleSignupSubmit}>
           {!isSignIn && (
             <input
@@ -136,8 +135,8 @@ export default function AuthModal({ open, onClose, onSignup, onLogin }) {
             required
             disabled={loading}
           />
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             className="modal-login-btn"
             disabled={loading}
           >
